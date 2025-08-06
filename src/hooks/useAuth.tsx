@@ -59,7 +59,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) {
       toast({
         title: "Sign Up Error",
-        description: error.message,
+        description: error.message.includes("Database error saving new user") 
+          ? "This username might already be taken. Please try a different username."
+          : error.message,
         variant: "destructive",
       });
     } else {

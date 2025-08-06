@@ -239,7 +239,7 @@ export default function ChessBoard({
               <span className="font-semibold">Black</span>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span className={`font-mono text-lg ${!isWhiteTurn && gameStatus === 'playing' ? 'text-destructive font-bold' : ''}`}>
+                <span className={`font-mono text-lg ${!isWhiteTurn && gameStatus === 'playing' ? 'text-destructive font-bold' : ''}`}>  
                   {formatTime(blackTime)}
                 </span>
               </div>
@@ -248,7 +248,7 @@ export default function ChessBoard({
             {/* Chess board */}
             <div className="relative">
               <Chessboard
-                position={gamePosition}
+                fen={gamePosition}
                 onPieceDrop={onDrop}
                 boardWidth={Math.min(600, window.innerWidth - 40)}
                 customBoardStyle={{
@@ -272,7 +272,7 @@ export default function ChessBoard({
               <span className="font-semibold">White</span>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span className={`font-mono text-lg ${isWhiteTurn && gameStatus === 'playing' ? 'text-destructive font-bold' : ''}`}>
+                <span className={`font-mono text-lg ${isWhiteTurn && gameStatus === 'playing' ? 'text-destructive font-bold' : ''}`}>  
                   {formatTime(whiteTime)}
                 </span>
               </div>
@@ -308,7 +308,7 @@ export default function ChessBoard({
               ) : (
                 <div className="grid grid-cols-2 gap-1 text-sm">
                   {gameHistory.map((move, index) => (
-                    <div key={index} className={`p-1 rounded ${index % 2 === 0 ? 'bg-muted' : ''}`}>
+                    <div key={index} className={`p-1 rounded ${index % 2 === 0 ? 'bg-muted' : ''}`}>  
                       <span className="text-muted-foreground mr-2">
                         {Math.floor(index / 2) + 1}{index % 2 === 0 ? '.' : '...'}
                       </span>

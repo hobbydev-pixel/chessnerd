@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* ChessNerd Design System - All colors, gradients, fonts, etc defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Chess-themed color palette */
+    --background: 42 50% 96%;
+    --foreground: 30 27% 8%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -17,11 +18,12 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Chess board colors */
+    --primary: 35 45% 15%; /* Dark squares */
+    --primary-foreground: 42 50% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 42 25% 85%; /* Light squares */
+    --secondary-foreground: 35 45% 15%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -37,6 +39,22 @@ All colors MUST be HSL.
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    /* Chess-specific colors */
+    --chess-primary: 35 45% 15%; /* Dark wood */
+    --chess-secondary: 42 25% 85%; /* Light wood */
+    --chess-accent: 25 95% 53%; /* Gold highlight */
+    --chess-success: 142 71% 45%; /* Green for wins */
+    --chess-warning: 48 96% 53%; /* Yellow for draws */
+    --chess-error: 0 84% 60%; /* Red for losses */
+    
+    /* Gradients */
+    --gradient-chess: linear-gradient(135deg, hsl(var(--chess-primary)), hsl(35 30% 25%));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--chess-accent)), hsl(45 85% 60%));
+    
+    /* Shadows */
+    --shadow-chess: 0 4px 20px hsl(var(--chess-primary) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--chess-accent) / 0.4);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,8 +74,8 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 30 27% 8%;
+    --foreground: 42 50% 96%;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -65,8 +83,8 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 42 25% 85%;
+    --primary-foreground: 35 45% 15%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -101,5 +119,34 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Chess board styles */
+  .chess-board {
+    @apply rounded-lg shadow-2xl;
+    box-shadow: var(--shadow-chess);
+  }
+
+  .chess-square-dark {
+    background: hsl(var(--chess-primary));
+  }
+
+  .chess-square-light {
+    background: hsl(var(--chess-secondary));
+  }
+
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .chess-glow {
+    box-shadow: var(--shadow-glow);
   }
 }

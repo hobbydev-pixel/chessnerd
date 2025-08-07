@@ -1,3 +1,7 @@
+code has an error please dont copy or use for project 
+
+
+
 # Welcome to your Lovable project
 
 ## Project info
